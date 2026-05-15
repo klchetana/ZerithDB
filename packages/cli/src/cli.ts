@@ -3,8 +3,10 @@ import { program } from "commander";
 import chalk from "chalk";
 import { initCommand } from "./commands/init.js";
 import { signalCommand } from "./commands/signal.js";
+import { createRequire } from "node:module";
 
-const VERSION = "0.1.0";
+const require = createRequire(import.meta.url);
+const { version: VERSION } = require("../package.json") as { version: string };  
 
 console.log(
   chalk.cyan(`
@@ -21,7 +23,7 @@ console.log(chalk.gray(`  Build full-stack apps with ZERO backend. v${VERSION}\n
 program
   .name("zerithdb")
   .description("ZerithDB CLI — scaffold and manage local-first P2P apps")
-  .version(VERSION);
+  .version(VERSION, "-v, --version", "Output the current version");
 
 program
   .command("init [app-name]")
