@@ -6,7 +6,7 @@ import { signalCommand } from "./commands/signal.js";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-const { version: VERSION } = require("../package.json") as { version: string };  
+const { version: VERSION } = require("../package.json") as { version: string };
 
 console.log(
   chalk.cyan(`
